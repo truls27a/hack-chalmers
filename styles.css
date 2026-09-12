@@ -170,20 +170,13 @@ p { margin: 0; }
 /* agenda times */
 
 .times {
-  margin: 16px 0 0;
+  margin: 14px 0 0;
   padding: 0;
   list-style: none;
   font-size: 1.15rem;
 }
 
-.times li { padding-block: 7px; }
-
-.times .t {
-  display: inline-block;
-  min-width: 7.5em;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-}
+.times li { padding-block: 6px; }
 
 /* cta */
 
