@@ -209,3 +209,7 @@ p { margin: 0; }
 
   .hero-meta { flex-direction: column; gap: 4px; padding-top: 56px; }
 }
+
+.sponsors { display: flex; align-items: center; gap: clamp(24px, 5vw, 72px); flex-wrap: wrap; }
+.sponsor-kokoll { display: inline-flex; align-items: center; gap: 36px; text-decoration: none; }
+.sponsor-kokoll span { font-weight: 500; font-size: clamp(38px, 8vw, 58px); letter-spacing: -0.03em; }
