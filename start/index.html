@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hack Chalmers — Opening</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    body { padding-inline: 0; overflow: hidden; }
+
+    .slide {
+      display: none;
+      min-height: 100svh;
+      padding: clamp(32px, 5vw, 72px);
+      align-content: center;
+    }
+
+    .slide.is-active { display: grid; }
+
+    .slide-inner { width: 100%; max-width: var(--maxw); margin-inline: auto; }
+
+    .slide h2 {
+      margin: 0 0 clamp(24px, 3vw, 40px);
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      letter-spacing: -0.04em;
+    }
+
+    .slide p, .slide li { font-size: clamp(1.1rem, 2.4vw, 1.9rem); }
+
+    .slide ul { margin: 0; padding: 0; list-style: none; }
+    .slide ol { margin: clamp(16px, 2vw, 28px) 0 0; padding-left: 1.3em; }
+    .slide li + li { margin-top: clamp(10px, 1.4vw, 18px); }
+    .slide p + p, .slide ol + p, .slide ul + p { margin-top: clamp(16px, 2vw, 28px); }
+
+    .slide-title { color: #fff; }
+    .slide-title h1 { font-size: clamp(3.4rem, 12vw, 8rem); letter-spacing: -0.045em; }
+    .slide-title p { margin-top: clamp(16px, 2vw, 28px); font-weight: 500; }
+
+    .lede { color: var(--muted); }
+
+    .code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .counter {
+      position: fixed;
+      right: clamp(16px, 2vw, 28px);
+      bottom: clamp(16px, 2vw, 28px);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    body.on-title .counter { color: #fff; opacity: .8; }
+  </style>
+</head>
+
+<body>
+
+  <section class="slide is-active slide-title grad-a">
+    <div class="slide-inner">
+      <h1>Hack<br>Chalmers</h1>
+      <p>October 3–4, 2026 · SB-G210</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <h2>Today</h2>
+      <ul>
+        <li>14:00 — Teams form, hacking starts</li>
+        <li>Evening — Pizza</li>
+        <li>00:00 — Room closes, head home</li>
+        <li>08:00 Sunday — Room opens</li>
+        <li>11:00 — Demos</li>
+        <li>11:45 — Winners</li>
+      </ul>
+      <p class="lede" style="margin-top:clamp(24px,3vw,40px)">The room is locked overnight, so take your things with you at midnight.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <h2>Teams</h2>
+      <p>Solo or in a team, both work.</p>
+      <p>If you came alone, now is the time to find people.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <h2>What to build</h2>
+      <p>No theme. No tracks.</p>
+      <p>Build something cool.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <h2>Set up Prelint</h2>
+      <p>Prelint is our partner and funds a prize. To be eligible, do these 4 steps:</p>
+      <ol>
+        <li>Sign up your team at <a href="https://prelint.com/?utm_source=event_hackchalmers" target="_blank" rel="noopener">prelint.com</a></li>
+        <li>Set up your account and connect your GitHub repo</li>
+        <li>Open <a href="https://app.prelint.com/settings/billing" target="_blank" rel="noopener">app.prelint.com/settings/billing</a></li>
+        <li>Click Redeem Code and enter <span class="code">HACKCHALMERS2026</span></li>
+      </ol>
+      <p class="lede">After that, Prelint posts a decision review on your pull requests and tells you when your code drifts from what you set out to build.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <h2>Prizes</h2>
+      <ul>
+        <li>Winning team: $2,500 in Prelint credits</li>
+        <li>Winning team: lifetime premium on KöKoll each, worth 1 990 kr</li>
+        <li>Every team: $250 in Prelint credits to use during the build</li>
+      </ul>
+      <p class="lede" style="margin-top:clamp(24px,3vw,40px)">You need the Prelint setup done to be eligible for the prize.</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <h2>Judging</h2>
+      <p>How cool is the thing you built? That's basically it.</p>
+      <p>Demos Sunday at 11:00, a few minutes per team.</p>
+      <p>Put your project in a public GitHub repo and mail the link to truls.borgvall@icloud.com before demos.</p>
+    </div>
+  </section>
+
+  <section class="slide slide-title grad-b">
+    <div class="slide-inner">
+      <h1>Go build<br>something</h1>
+    </div>
+  </section>
+
+  <span class="counter"></span>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const counter = document.querySelector('.counter');
+    let i = 0;
+
+    function show(next) {
+      i = Math.max(0, Math.min(slides.length - 1, next));
+      slides.forEach((s, n) => s.classList.toggle('is-active', n === i));
+      document.body.classList.toggle('on-title', slides[i].classList.contains('slide-title'));
+      counter.textContent = (i + 1) + ' / ' + slides.length;
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') show(i + 1);
+      if (e.key === 'ArrowLeft') show(i - 1);
+    });
+
+    show(0);
+  </script>
+
+</body>
+
+</html>
