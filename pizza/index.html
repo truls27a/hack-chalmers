@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hack Chalmers — Pizza</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .form { max-width: 620px; margin-inline: auto; padding-block: clamp(40px, 7vw, 72px); }
+    .form h1 { font-size: clamp(2.4rem, 7vw, 3.6rem); letter-spacing: -0.04em; }
+    .form .lede { margin-top: 16px; color: var(--muted); }
+
+    .field { margin-top: clamp(28px, 4vw, 40px); }
+    .field > label, .field > .legend { display: block; margin-bottom: 12px; font-weight: 700; }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    input[type="text"]:focus { outline: 2px solid var(--g-blue); outline-offset: 1px; }
+
+    .choices { display: grid; gap: 10px; }
+
+    .choice {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      cursor: pointer;
+    }
+
+    .choice:has(input:checked) { border-color: var(--ink); }
+    .choice input { accent-color: var(--ink); width: 18px; height: 18px; }
+
+    .submit { margin-top: clamp(28px, 4vw, 40px); border: 0; cursor: pointer; font: inherit; }
+    .submit[disabled] { opacity: .5; cursor: default; }
+
+    .done { display: none; }
+    .done h1 { font-size: clamp(2.2rem, 6vw, 3.2rem); }
+    body.sent .form-live { display: none; }
+    body.sent .done { display: block; }
+  </style>
+</head>
+
+<body>
+
+  <main class="wrap form">
+
+    <div class="form-live">
+      <h1>Pizza</h1>
+      <p class="lede">We're ordering a mix for everyone, so this is a wish rather than an order. Takes 20 seconds.</p>
+
+      <form id="pizza-form">
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+
+        <div class="field">
+          <span class="legend">What can you eat?</span>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="diet" value="Anything" required> Anything</label>
+            <label class="choice"><input type="radio" name="diet" value="No pork"> No pork</label>
+            <label class="choice"><input type="radio" name="diet" value="Halal"> Halal</label>
+            <label class="choice"><input type="radio" name="diet" value="Vegetarian"> Vegetarian</label>
+            <label class="choice"><input type="radio" name="diet" value="Vegan"> Vegan</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="allergies">Allergies or anything else?</label>
+          <input id="allergies" name="allergies" type="text" placeholder="Gluten, lactose, nuts, no beef…">
+        </div>
+
+        <div class="field">
+          <label for="wish">Pizza wish (optional)</label>
+          <input id="wish" name="wish" type="text" placeholder="Kebab, margherita, whatever">
+        </div>
+
+        <button class="btn submit" type="submit">Send</button>
+      </form>
+    </div>
+
+    <div class="done">
+      <h1>Thanks!</h1>
+      <p class="lede">Noted. Pizza lands in the evening.</p>
+    </div>
+
+  </main>
+
+  <script>
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxhP9_O2_W5V3BMn7jOCMPwkAAEy2FthC2ehXjEm_Svs732sYbjUakjc_b-Spy1PTsx/exec';
+
+    const form = document.getElementById('pizza-form');
+    const button = form.querySelector('.submit');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      button.disabled = true;
+      button.textContent = 'Sending…';
+
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      try {
+        await fetch(ENDPOINT, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(data)
+        });
+        document.body.classList.add('sent');
+      } catch (err) {
+        button.disabled = false;
+        button.textContent = 'Send';
+        alert("Couldn't send that. Tell an organiser instead.");
+      }
+    });
+  </script>
+
+</body>
+
+</html>
