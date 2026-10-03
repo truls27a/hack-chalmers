@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hack Chalmers — Countdown</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    body { padding-inline: 0; overflow: hidden; }
+
+    .screen {
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      gap: clamp(16px, 2vw, 28px);
+      min-height: 100svh;
+      padding: clamp(24px, 4vw, 64px);
+      color: #fff;
+      text-align: center;
+    }
+
+    .label {
+      font-size: clamp(1rem, 2.4vw, 1.6rem);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      opacity: .85;
+    }
+
+    .clock {
+      font-size: clamp(3.4rem, 17vw, 13rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .sub { font-size: clamp(.95rem, 2vw, 1.3rem); opacity: .75; }
+  </style>
+</head>
+
+<body>
+
+  <main class="screen grad-a">
+    <p class="label">Hacking ends in</p>
+    <p class="clock" id="clock">--:--:--</p>
+    <p class="sub">Sunday 10:45 · Demos at 11:00</p>
+  </main>
+
+  <script>
+    // 2026-10-04 10:45 in Gothenburg (CEST, UTC+2)
+    const target = new Date('2026-10-04T10:45:00+02:00');
+    const clock = document.getElementById('clock');
+    const label = document.querySelector('.label');
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+      const left = target - new Date();
+
+      if (left <= 0) {
+        label.textContent = 'Hacking is over';
+        clock.textContent = "Time's up";
+        return;
+      }
+
+      const h = Math.floor(left / 3600000);
+      const m = Math.floor(left / 60000) % 60;
+      const s = Math.floor(left / 1000) % 60;
+      clock.textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  </script>
+
+</body>
+
+</html>
