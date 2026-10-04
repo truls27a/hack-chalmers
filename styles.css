@@ -279,3 +279,6 @@ p { margin: 0; }
   .waitlist { flex-direction: column; }
   .waitlist input, .waitlist .btn { width: 100%; justify-content: center; }
 }
+
+.group-shot { display: block; margin-top: clamp(14px, 2vw, 22px); border-radius: var(--radius); overflow: hidden; }
+.group-shot img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
