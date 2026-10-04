@@ -280,5 +280,5 @@ p { margin: 0; }
   .waitlist input, .waitlist .btn { width: 100%; justify-content: center; }
 }
 
-.group-shot { display: block; margin-top: clamp(14px, 2vw, 22px); border-radius: var(--radius); overflow: hidden; }
+.group-shot { display: block; margin-top: clamp(28px, 4vw, 44px); border-radius: var(--radius); overflow: hidden; }
 .group-shot img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
