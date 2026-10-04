@@ -213,3 +213,45 @@ p { margin: 0; }
 .sponsors { display: flex; align-items: center; gap: clamp(24px, 5vw, 72px); flex-wrap: wrap; }
 .sponsor-kokoll { display: inline-flex; align-items: center; gap: 36px; text-decoration: none; }
 .sponsor-kokoll span { font-weight: 500; font-size: clamp(38px, 8vw, 58px); letter-spacing: -0.03em; }
+
+.project { margin-top: 36px; }
+.project:first-of-type { margin-top: 0; }
+.project h3 { margin-top: 0; font-size: 1.35rem; }
+.project p { margin-top: 8px; }
+.project .team { color: var(--muted); font-size: 15px; }
+
+.strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 24px; }
+.strip a:nth-child(5) { display: none; }
+
+@media (min-width: 860px) {
+  .strip { grid-template-columns: repeat(5, 1fr); }
+  .strip a:nth-child(5) { display: block; }
+}
+.strip img { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 14px; }
+
+.shot { display: block; width: 100%; max-width: 560px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 18px; margin-bottom: 18px; }
+
+@media (min-width: 860px) {
+  .project:has(.shot) {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    column-gap: 40px;
+    align-content: center;
+    margin-top: 56px;
+  }
+  .project:has(.shot) > a:has(.shot) { grid-column: 1; grid-row: 1 / -1; align-self: center; }
+  .project:has(.shot) > :not(a:has(.shot)) { grid-column: 2; align-self: center; }
+  .project:has(.shot) h3 { align-self: end; }
+  .project:has(.shot) .team { align-self: start; }
+  .project .shot { margin-bottom: 0; max-width: none; }
+}
+
+@media (min-width: 860px) {
+  .project:has(.shot) {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    column-gap: 32px;
+    align-items: start;
+  }
+  .project .shot { margin-bottom: 0; max-width: none; }
+}
