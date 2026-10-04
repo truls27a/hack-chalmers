@@ -255,3 +255,27 @@ p { margin: 0; }
   }
   .project .shot { margin-bottom: 0; max-width: none; }
 }
+
+.waitlist { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; margin-top: 24px; }
+.waitlist input {
+  min-width: 260px;
+  height: 46px;
+  padding: 0 26px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255,255,255,.18);
+  color: #fff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: normal;
+}
+.waitlist input::placeholder { color: rgba(255,255,255,.7); }
+.waitlist input:focus { outline: 2px solid #fff; outline-offset: 1px; }
+.waitlist .btn { display: inline-flex; align-items: center; height: 46px; margin-top: 0; padding: 0 26px; border: 0; cursor: pointer; }
+.waitlist-done { display: none; margin-top: 24px; }
+
+@media (max-width: 560px) {
+  .waitlist { flex-direction: column; }
+  .waitlist input, .waitlist .btn { width: 100%; justify-content: center; }
+}

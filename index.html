@@ -150,11 +150,45 @@
     <section class="wrap">
       <div class="cta grad-b">
         <h2>Thanks for building</h2>
-        <p>See you at the next one.</p>
+        <p>Want to hear about the next one? Leave your email.</p>
+
+        <form class="waitlist" id="waitlist">
+          <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+          <button class="btn btn-light" type="submit">Notify me</button>
+        </form>
+        <p class="waitlist-done" id="waitlist-done">Thanks, we'll be in touch.</p>
       </div>
     </section>
 
   </main>
+
+  <script>
+    const WAITLIST_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxhP9_O2_W5V3BMn7jOCMPwkAAEy2FthC2ehXjEm_Svs732sYbjUakjc_b-Spy1PTsx/exec';
+
+    const waitlist = document.getElementById('waitlist');
+    const done = document.getElementById('waitlist-done');
+
+    waitlist.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const button = waitlist.querySelector('button');
+      button.disabled = true;
+      button.textContent = 'Sending…';
+
+      try {
+        await fetch(WAITLIST_ENDPOINT, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ email: document.getElementById('email').value })
+        });
+        waitlist.style.display = 'none';
+        done.style.display = 'block';
+      } catch (err) {
+        button.disabled = false;
+        button.textContent = 'Notify me';
+      }
+    });
+  </script>
 
   <footer class="wrap footer">
     <div>
