@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hack Chalmers — Photos</title>
+  <meta name="description" content="Photos from Hack Chalmers, October 3–4, 2026.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    .intro { padding-block: clamp(40px, 6vw, 72px); }
+    .intro h1 { font-size: clamp(2.6rem, 8vw, 4.4rem); letter-spacing: -0.04em; }
+    .intro p { margin-top: 16px; color: var(--muted); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+      padding-bottom: clamp(48px, 7vw, 88px);
+    }
+
+    .grid a { display: block; border-radius: 18px; overflow: hidden; background: var(--line); }
+
+    .grid img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      transition: transform .25s ease;
+    }
+
+    .grid a:hover img { transform: scale(1.03); }
+
+    .header .wordmark { text-decoration: none; }
+  </style>
+</head>
+
+<body>
+
+  <header class="header wrap">
+    <a class="wordmark" href="../">Hack Chalmers</a>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <h1>Photos</h1>
+      <p>October 3–4, 2026. Click any photo for the full size.</p>
+    </section>
+
+    <section class="grid" id="grid"></section>
+  </main>
+
+  <script>
+    const grid = document.getElementById('grid');
+    const count = 20;
+
+    for (let i = count; i >= 1; i--) {
+      const n = String(i).padStart(2, '0');
+      const a = document.createElement('a');
+      a.href = `../img/${n}.jpg`;
+      a.target = '_blank';
+      a.rel = 'noopener';
+
+      const img = document.createElement('img');
+      img.src = `../img/${n}.jpg`;
+      img.alt = `Hack Chalmers photo ${i}`;
+      img.loading = 'lazy';
+
+      a.appendChild(img);
+      grid.appendChild(a);
+    }
+  </script>
+
+</body>
+
+</html>
