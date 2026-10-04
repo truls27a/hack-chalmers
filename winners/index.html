@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hack Chalmers — Winners</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+
+  <style>
+    body { padding-inline: 0; overflow: hidden; }
+
+    .slide {
+      display: none;
+      min-height: 100svh;
+      padding: clamp(32px, 5vw, 72px);
+      align-content: center;
+      justify-items: center;
+      text-align: center;
+    }
+
+    .slide.is-active { display: grid; }
+    .slide-inner { width: 100%; max-width: var(--maxw); }
+
+    .kicker {
+      font-size: clamp(1rem, 2.6vw, 1.7rem);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: .8;
+    }
+
+    .name {
+      margin-top: clamp(12px, 2vw, 24px);
+      font-size: clamp(3rem, 12vw, 9rem);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 1;
+    }
+
+    .by { margin-top: clamp(14px, 2vw, 26px); font-size: clamp(1.1rem, 2.6vw, 1.9rem); font-weight: 500; opacity: .85; }
+    .prize { margin-top: clamp(20px, 3vw, 36px); font-size: clamp(1rem, 2.2vw, 1.5rem); opacity: .8; }
+
+    .light { color: #fff; }
+
+    .counter {
+      position: fixed;
+      right: clamp(16px, 2vw, 28px);
+      bottom: clamp(16px, 2vw, 28px);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    body.on-light .counter { color: #fff; opacity: .7; }
+  </style>
+</head>
+
+<body>
+
+  <section class="slide is-active light grad-a">
+    <div class="slide-inner">
+      <p class="kicker">Hack Chalmers 2026</p>
+      <p class="name">The<br>winners</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <p class="kicker">In third place</p>
+      <p class="name">…</p>
+    </div>
+  </section>
+
+  <section class="slide light grad-b">
+    <div class="slide-inner">
+      <p class="kicker">Third place</p>
+      <p class="name">Booooth</p>
+      <p class="by">Francisca</p>
+      <p class="prize">A photo booth in your pocket, and a map of every moment</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <p class="kicker">In second place</p>
+      <p class="name">…</p>
+    </div>
+  </section>
+
+  <section class="slide light grad-a">
+    <div class="slide-inner">
+      <p class="kicker">Second place</p>
+      <p class="name">DoomWalk</p>
+      <p class="by">Lan</p>
+      <p class="prize">Earn your scrolls with walking</p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="slide-inner">
+      <p class="kicker">And the winner is</p>
+      <p class="name">…</p>
+    </div>
+  </section>
+
+  <section class="slide light grad-b">
+    <div class="slide-inner">
+      <p class="kicker">First place</p>
+      <p class="name">Trackpad<br>Drums</p>
+      <p class="by">Sven</p>
+      <p class="prize">$2,500 in Prelint credits · Lifetime premium on KöKoll</p>
+    </div>
+  </section>
+
+  <section class="slide light grad-a">
+    <div class="slide-inner">
+      <p class="kicker">Thanks for building</p>
+      <p class="name">See you<br>next time</p>
+    </div>
+  </section>
+
+  <span class="counter"></span>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const counter = document.querySelector('.counter');
+    let i = 0;
+
+    function show(next) {
+      i = Math.max(0, Math.min(slides.length - 1, next));
+      slides.forEach((s, n) => s.classList.toggle('is-active', n === i));
+      document.body.classList.toggle('on-light', slides[i].classList.contains('light'));
+      counter.textContent = (i + 1) + ' / ' + slides.length;
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') show(i + 1);
+      if (e.key === 'ArrowLeft') show(i - 1);
+    });
+
+    show(0);
+  </script>
+
+</body>
+
+</html>
